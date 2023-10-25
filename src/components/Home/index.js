@@ -28,9 +28,13 @@ class Home extends Component {
 
   getOrderDetails = async () => {
     const url = "https://fakestoreapi.com/products";
-    const responseData = await fetch(url);
-    const data = await responseData.json();
-    this.setState({ ordersList: data });
+    try {
+      const responseData = await fetch(url);
+      const data = await responseData.json();
+      this.setState({ ordersList: data });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   addSearchInput = (event) => {
@@ -39,10 +43,12 @@ class Home extends Component {
 
   searchResults = () => {
     const { ordersList, searchInput } = this.state;
-    const filteredList = ordersList.map((item) =>
-      item.title.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    this.setState({ ordersList: filteredList });
+    if (searchInput !== "") {
+      const filteredList = ordersList.map((item) =>
+        item.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      this.setState({ ordersList: filteredList });
+    }
   };
 
   render() {
@@ -57,7 +63,7 @@ class Home extends Component {
             <Paragraph>Order 12367ABC</Paragraph>
           </RowContainer>
           <RowContainer value="true">
-            <Heading>Order 12367ABC</Heading>
+            <Heading value="true">Order 12367ABC</Heading>
             <RowContainer>
               <Button type="button" value="true">
                 Back
@@ -68,39 +74,38 @@ class Home extends Component {
         </OrderDetailsContainer>
         <MainContainer>
           <OrderDetailsContainer>
-            <RowContainer>
+            <RowContainer value1="true">
               <Paragraph>Supplier</Paragraph>
               <Heading>East coast fruits & vegetables</Heading>
             </RowContainer>
             <HrElement />
-            <RowContainer>
+            <RowContainer value1="true">
               <Paragraph>Shipping date</Paragraph>
               <Heading>Thu, Oct 26</Heading>
             </RowContainer>
             <HrElement />
-            <RowContainer>
+            <RowContainer value1="true">
               <Paragraph>Total</Paragraph>
               <Heading>$ 12,301.9</Heading>
             </RowContainer>
             <HrElement />
-            <RowContainer>
+            <RowContainer value1="true">
               <Paragraph>Category</Paragraph>
             </RowContainer>
             <HrElement />
-            <RowContainer>
+            <RowContainer value1="true">
               <Paragraph>Department</Paragraph>
               <Heading>123-598-670</Heading>
             </RowContainer>
             <HrElement />
-            <RowContainer>
+            <RowContainer value1="true">
               <Paragraph>Status</Paragraph>
               <Heading>Awaiting your approval</Heading>
             </RowContainer>
-            <HrElement />
           </OrderDetailsContainer>
         </MainContainer>
-        <OrderDetailsContainer>
-          <RowContainer>
+        <OrderDetailsContainer value="true">
+          <RowContainer value="true">
             <Form>
               <SearchInput
                 type="text"

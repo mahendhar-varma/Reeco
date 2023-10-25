@@ -4,6 +4,8 @@ import { BsCart4 } from "react-icons/bs";
 export const Nav = styled.nav`
   height: 70px;
   background-color: #6603fc;
+  margin-top: 0px;
+  padding: 10px;
 `;
 
 export const Ul = styled.ul`
@@ -32,6 +34,8 @@ export const ListElement = styled.li`
 
 export const CartIcon = styled(BsCart4)`
   width: 20px;
+  margin-top: 18px;
+  margin-right: 10px;
 `;
 
 export const Para = styled.p`
