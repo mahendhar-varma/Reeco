@@ -19,6 +19,13 @@ const OrderItem = (props) => {
   const { data, text, ApproveAction, MissingAction, EditedAction } = props;
   const { title, price, category, image } = data;
 
+  let statusTextColor = "green";
+  if (text === "Missing Urgent") {
+    statusTextColor = "red";
+  } else if (text === "Urgent") {
+    statusTextColor = "yellow";
+  }
+
   return (
     <ListItem>
       <Image src={image} alt="order" />
@@ -28,12 +35,23 @@ const OrderItem = (props) => {
       <Text>1</Text>
       <Text>{price}</Text>
       <StatusContainer>
-        <StatusText>{text}</StatusText>
-        <Btn type="button" onClick={() => ApproveAction("Approved")}>
+        <StatusText statusTextColor={statusTextColor}>{text}</StatusText>
+        <Btn
+          type="button"
+          onClick={() => ApproveAction("Approved")}
+          statusTextColor={statusTextColor}
+        >
           <Tick />
         </Btn>
         <PopUpContainer>
-          <Popup modal trigger={<Btn type="button">x</Btn>}>
+          <Popup
+            modal
+            trigger={
+              <Btn type="button" statusTextColor={statusTextColor}>
+                x
+              </Btn>
+            }
+          >
             {(close) => (
               <>
                 <ListItem>

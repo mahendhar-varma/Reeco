@@ -24,7 +24,17 @@ export const StatusContainer = styled.div`
   flex-direction: row;
 `;
 
-export const StatusText = styled.p``;
+export const StatusText = styled.p`
+  color: ${(props) => {
+    if (props.statusTextColor === "green") {
+      return "#023d04";
+    } else if (props.statusTextColor === "red") {
+      return "#d90707";
+    } else {
+      return "#dbab25";
+    }
+  }};
+`;
 
 export const Btn = styled.button`
   background: transparent;
