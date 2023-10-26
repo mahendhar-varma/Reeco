@@ -16,9 +16,13 @@ import { MissingAction } from "../../action";
 import { EditedAction } from "../../action";
 
 const OrderItem = (props) => {
-  const { data, textId, ApproveAction, MissingAction, EditedAction } = props;
-  let { text } = props;
+  const { data, ApproveAction, MissingAction, EditedAction, newArray } = props;
   const { id, title, price, category, image } = data;
+
+  const requiredObjectArray = newArray.filter((item) => item.textId === id);
+  requiredObjectArray.push({ text: "", textId: "" });
+
+  const { text, textId } = requiredObjectArray[0];
 
   let statusTextColor = "";
   if (textId === id) {
@@ -28,9 +32,6 @@ const OrderItem = (props) => {
     } else if (text === "Urgent") {
       statusTextColor = "yellow";
     }
-  }
-  if (textId !== id) {
-    text = "";
   }
 
   return (
@@ -81,7 +82,10 @@ const OrderItem = (props) => {
                       <Btn
                         type="button"
                         onClick={() =>
-                          MissingAction({ text: "Missing Urgent", textId: id })
+                          MissingAction({
+                            text: "Missing Urgent",
+                            textId: id,
+                          })
                         }
                       >
                         Yes
@@ -106,8 +110,7 @@ const OrderItem = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  text: state.text,
-  textId: state.textId,
+  newArray: state,
 });
 
 export default connect(mapStateToProps, {

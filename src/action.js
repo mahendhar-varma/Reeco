@@ -1,20 +1,20 @@
 export const ApproveAction = (value) => async (dispatch) => {
   dispatch({
-    type: "APPROVED",
+    type: "DONE",
     payload: value,
   });
 };
 
 export const MissingAction = (value) => async (dispatch) => {
   dispatch({
-    type: "MISSING",
+    type: "DONE",
     payload: value,
   });
 };
 
 export const EditedAction = (value) => async (dispatch) => {
   dispatch({
-    type: "EDITED",
+    type: "DONE",
     payload: value,
   });
 };

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Header from "../Header";
 import OrderItem from "../OrderItem";
+import { connect } from "react-redux";
 import {
   OrderDetailsContainer,
   RowContainer,
@@ -144,4 +145,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  text: state.text,
+  textId: state.textId,
+});
+
+export default connect(mapStateToProps)(Home);

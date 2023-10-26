@@ -1,15 +1,26 @@
-const status = "";
+const status = [];
 
 export default function reducer(state = status, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case "APPROVED":
-      return (state = payload);
-    case "EDITED":
-      return (state = payload);
-    case "MISSING":
-      return (state = payload);
+    case "DONE":
+      const { text, textId } = payload;
+
+      const check = state.some((item) => item.textId === textId);
+
+      const filteredList = state.map((item) => {
+        if (item.textId === textId) {
+          return { ...item, text: text };
+        }
+        return item;
+      });
+
+      if (check !== true) {
+        return (state = [...state, payload]);
+      } else {
+        return (state = filteredList);
+      }
     default:
       return state;
   }
