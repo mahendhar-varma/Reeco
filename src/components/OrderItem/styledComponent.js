@@ -49,7 +49,7 @@ export const Btn = styled.button`
     }
   }};
   margin-top: ${(props) => props.value1 === "true" && -2}px;
-  height: 80px;
+  height: 123px;
   width: 40px;
 `;
 
