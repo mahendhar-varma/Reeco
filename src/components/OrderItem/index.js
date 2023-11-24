@@ -25,9 +25,9 @@ const OrderItem = (props) => {
   const requiredObjectArray = newArray.filter((item) => item.textId === id);
   requiredObjectArray.push({ text: "", textBg: "" });
 
-  const { text, textBg } = requiredObjectArray[0];
+  const { text } = requiredObjectArray[0];
 
-  let statusTextColor = textBg;
+  let forStatusTextColor = text;
 
   return (
     <>
@@ -36,7 +36,7 @@ const OrderItem = (props) => {
           <Image src={image} alt="order" />
         </td>
         <td>
-          <Text>{title}</Text>
+          <Text value="true">{title}</Text>
         </td>
         <td>
           <Text>{category}</Text>
@@ -52,7 +52,7 @@ const OrderItem = (props) => {
         </td>
         <Td>
           <StatusContainer>
-            <TextContainer statustextcolor={statusTextColor}>
+            <TextContainer statustextcolor={forStatusTextColor}>
               <StatusText>{text}</StatusText>
             </TextContainer>
             <Btn
@@ -61,10 +61,9 @@ const OrderItem = (props) => {
                 ApproveAction({
                   text: "Approved",
                   textId: id,
-                  textBg: "green",
                 })
               }
-              statustextcolor={statusTextColor}
+              statustextcolor={forStatusTextColor}
               value="green"
             >
               <Tick />
@@ -76,8 +75,8 @@ const OrderItem = (props) => {
                   <Btn
                     type="button"
                     value1="true"
-                    statustextcolor={statusTextColor}
                     value="red"
+                    statustextcolor={forStatusTextColor}
                   >
                     x
                   </Btn>
@@ -100,7 +99,6 @@ const OrderItem = (props) => {
                             MissingAction({
                               text: "Missing",
                               textId: id,
-                              textBg: "orange",
                             })
                           }
                         >
@@ -112,7 +110,6 @@ const OrderItem = (props) => {
                             MissingAction({
                               text: "Missing Urgent",
                               textId: id,
-                              textBg: "red",
                             })
                           }
                         >
@@ -130,10 +127,9 @@ const OrderItem = (props) => {
                 EditedAction({
                   text: "Edited",
                   textId: id,
-                  textBg: "yellow",
                 })
               }
-              statustextcolor={statusTextColor}
+              statustextcolor={forStatusTextColor}
               value="yellow"
             >
               Edit

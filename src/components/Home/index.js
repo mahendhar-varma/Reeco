@@ -18,6 +18,7 @@ import {
   EmptySearchContainer,
   Table,
   Tr,
+  Th,
   AppleIcon,
   ServiceIcon,
   ChartIcon,
@@ -157,12 +158,12 @@ class Home extends Component {
             <tbody>
               <Tr>
                 <th></th>
-                <th>Product name</th>
-                <th>Brand</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Status</th>
+                <Th>Product name</Th>
+                <Th>Brand</Th>
+                <Th>Price</Th>
+                <Th>Quantity</Th>
+                <Th>Total</Th>
+                <Th>Status</Th>
               </Tr>
 
               {checkForList ? (

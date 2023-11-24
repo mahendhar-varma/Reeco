@@ -24,8 +24,7 @@ export const Text = styled.p`
   font-size: 16px;
   color: #a8a6ab;
   width: ${(props) => (props.value ? 200 : 120)}px;
-  margin-left: 6px;
-  text-align: center;
+  text-align: left;
 `;
 
 export const StatusContainer = styled.div`
@@ -38,13 +37,13 @@ export const StatusContainer = styled.div`
 
 export const TextContainer = styled.div`
   background-color: ${(props) => {
-    if (props.statustextcolor === "green") {
+    if (props.statustextcolor === "Approved") {
       return "#023d04";
-    } else if (props.statustextcolor === "red") {
+    } else if (props.statustextcolor === "Missing Urgent") {
       return "#d90707";
-    } else if (props.statustextcolor === "yellow") {
+    } else if (props.statustextcolor === "Edited") {
       return "#dbab25";
-    } else if (props.statustextcolor === "orange") {
+    } else if (props.statustextcolor === "Missing") {
       return "#FFA550";
     }
   }};
@@ -64,13 +63,16 @@ export const Btn = styled.button`
   border: none;
   cursor: pointer;
   color: ${(props) => {
-    if (props.statustextcolor === "green" && props.value === "green") {
+    if (props.value === "green" && props.statustextcolor === "Approved") {
       return "#023d04";
-    } else if (props.statustextcolor === "red" && props.value === "red") {
+    } else if (
+      props.value === "red" &&
+      props.statustextcolor === "Missing Urgent"
+    ) {
       return "#d90707";
-    } else if (props.statustextcolor === "yellow" && props.value === "yellow") {
+    } else if (props.value === "yellow" && props.statustextcolor === "Edited") {
       return "#dbab25";
-    } else if (props.statustextcolor === "orange" && props.value === "red") {
+    } else if (props.value === "red" && props.statustextcolor === "Missing") {
       return "#FFA550";
     }
   }};

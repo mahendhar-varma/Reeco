@@ -5,13 +5,13 @@ export default function reducer(state = status, action) {
 
   switch (type) {
     case "DONE":
-      const { text, textId, textBg } = payload;
+      const { text, textId } = payload;
 
       const check = state.some((item) => item.textId === textId);
 
       const filteredList = state.map((item) => {
         if (item.textId === textId) {
-          return { ...item, text: text, textBg: textBg };
+          return { ...item, text: text };
         }
         return item;
       });

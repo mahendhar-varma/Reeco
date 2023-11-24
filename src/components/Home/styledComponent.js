@@ -120,12 +120,18 @@ export const Table = styled.table`
   margin-top: 20px;
   width: 100%;
   border: 1px solid #aeaeae;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 `;
 
 export const Tr = styled.tr`
   border-bottom: 1px solid #aeaeae;
   padding-top: 10px;
   padding-bottom: 10px;
+`;
+
+export const Th = styled.th`
+  text-align: left;
 `;
 
 export const AppleIcon = styled(AiFillApple)`
