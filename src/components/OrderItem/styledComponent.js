@@ -24,7 +24,7 @@ export const StatusContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100px;
+  height: 60px;
   padding: 10px;
 `;
 
@@ -49,7 +49,7 @@ export const Btn = styled.button`
     }
   }};
   margin-top: ${(props) => props.value1 === "true" && -2}px;
-  height: 40px;
+  height: 80px;
   width: 40px;
 `;
 
