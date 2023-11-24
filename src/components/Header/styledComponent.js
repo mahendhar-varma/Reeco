@@ -36,6 +36,7 @@ export const CartIcon = styled(BsCart4)`
   width: 20px;
   margin-top: 18px;
   margin-right: 10px;
+  color: white;
 `;
 
 export const Para = styled.p`

@@ -1,13 +1,14 @@
 import {
-  ListItem,
   Text,
   Image,
   Tick,
   StatusContainer,
+  TextContainer,
   StatusText,
   Btn,
   PopUpContainer,
-  Container,
+  Container1,
+  Container2,
 } from "./styledComponent";
 import Popup from "reactjs-popup";
 import { connect } from "react-redux";
@@ -20,91 +21,124 @@ const OrderItem = (props) => {
   const { id, title, price, category, image } = data;
 
   const requiredObjectArray = newArray.filter((item) => item.textId === id);
-  requiredObjectArray.push({ text: "", textId: "" });
+  requiredObjectArray.push({ textBg: "" });
 
-  const { text, textId } = requiredObjectArray[0];
+  const { text, textBg } = requiredObjectArray[0];
 
-  let statusTextColor = "";
-  if (textId === id) {
-    statusTextColor = "green";
-    if (text === "Missing Urgent") {
-      statusTextColor = "red";
-    } else if (text === "Urgent") {
-      statusTextColor = "yellow";
-    }
-  }
+  let statusTextColor = textBg;
 
   return (
     <>
-      <ListItem>
-        <Image src={image} alt="order" />
-        <Text>{title}</Text>
-        <Text>{category}</Text>
-        <Text>{price}</Text>
-        <Text>1</Text>
-        <Text>{price}</Text>
-        <StatusContainer>
-          <StatusText statustextcolor={statusTextColor}>{text}</StatusText>
-          <Btn
-            type="button"
-            onClick={() => ApproveAction({ text: "Approved", textId: id })}
-          >
-            <Tick />
-          </Btn>
-          <PopUpContainer>
-            <Popup
-              modal
-              trigger={
-                <Btn type="button" value="true">
-                  x
-                </Btn>
+      <tr>
+        <td>
+          <Image src={image} alt="order" />
+        </td>
+        <td>
+          <Text>{title}</Text>
+        </td>
+        <td>
+          <Text>{category}</Text>
+        </td>
+        <td>
+          <Text>{price}</Text>
+        </td>
+        <td>
+          <Text>1</Text>
+        </td>
+        <td>
+          <Text>{price}</Text>
+        </td>
+        <td>
+          <StatusContainer>
+            <TextContainer statustextcolor={statusTextColor}>
+              <StatusText>{text}</StatusText>
+            </TextContainer>
+            <Btn
+              type="button"
+              onClick={() =>
+                ApproveAction({
+                  text: "Approved",
+                  textId: id,
+                  textBg: "green",
+                })
               }
+              statustextcolor={statusTextColor}
+              value="green"
             >
-              {(close) => (
-                <>
-                  <ListItem value="true">
-                    <Container>
-                      <Text>Missing Product</Text>
-                      <Btn type="button" onClick={() => close()}>
-                        x
-                      </Btn>
-                    </Container>
-                    <Text>is {title} urgent?</Text>
-                    <Container>
-                      <Btn
-                        type="button"
-                        onClick={() =>
-                          MissingAction({ text: "Urgent", textId: id })
-                        }
-                      >
-                        No
-                      </Btn>
-                      <Btn
-                        type="button"
-                        onClick={() =>
-                          MissingAction({
-                            text: "Missing Urgent",
-                            textId: id,
-                          })
-                        }
-                      >
-                        Yes
-                      </Btn>
-                    </Container>
-                  </ListItem>
-                </>
-              )}
-            </Popup>
-          </PopUpContainer>
-          <Btn
-            type="button"
-            onClick={() => EditedAction({ text: "Edited", textId: id })}
-          >
-            Edit
-          </Btn>
-        </StatusContainer>
-      </ListItem>
-      <hr />
+              <Tick />
+            </Btn>
+            <PopUpContainer>
+              <Popup
+                modal
+                trigger={
+                  <Btn
+                    type="button"
+                    value1="true"
+                    statustextcolor={statusTextColor}
+                    value="red"
+                  >
+                    x
+                  </Btn>
+                }
+              >
+                {(close) => (
+                  <>
+                    <Container1>
+                      <Container2>
+                        <Text>Missing Product</Text>
+                        <Btn type="button" onClick={() => close()}>
+                          x
+                        </Btn>
+                      </Container2>
+                      <Text>is {title} urgent?</Text>
+                      <Container2>
+                        <Btn
+                          type="button"
+                          onClick={() =>
+                            MissingAction({
+                              text: "Missing",
+                              textId: id,
+                              textBg: "orange",
+                            })
+                          }
+                        >
+                          No
+                        </Btn>
+                        <Btn
+                          type="button"
+                          onClick={() =>
+                            MissingAction({
+                              text: "Missing Urgent",
+                              textId: id,
+                              textBg: "red",
+                            })
+                          }
+                        >
+                          Yes
+                        </Btn>
+                      </Container2>
+                    </Container1>
+                  </>
+                )}
+              </Popup>
+            </PopUpContainer>
+            <Btn
+              type="button"
+              onClick={() =>
+                EditedAction({
+                  text: "Edited",
+                  textId: id,
+                  textBg: "yellow",
+                })
+              }
+              statustextcolor={statusTextColor}
+              value="yellow"
+            >
+              Edit
+            </Btn>
+          </StatusContainer>
+        </td>
+      </tr>
     </>
   );
 };

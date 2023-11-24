@@ -15,13 +15,23 @@ import {
   SearchInput,
   SearchIcon,
   Printer,
-  TableContainer,
-  Ul,
+  EmptySearchContainer,
+  Table,
+  Tr,
 } from "./styledComponent";
 import { Btn } from "../OrderItem/styledComponent";
+import {
+  AiFillApple,
+  AiFillCustomerService,
+  AiOutlineRadarChart,
+} from "react-icons/ai";
+import { GiAmpleDress } from "react-icons/gi";
+import { FaShoppingBag, FaRing } from "react-icons/fa";
+import { MdMonitor } from "react-icons/md";
+import { FiBox } from "react-icons/fi";
 
 class Home extends Component {
-  state = { ordersList: [], searchInput: "" };
+  state = { ordersList: [], searchInput: "", isSearchClicked: false };
 
   componentDidMount() {
     this.getOrderDetails();
@@ -43,17 +53,26 @@ class Home extends Component {
   };
 
   searchResults = () => {
-    const { ordersList, searchInput } = this.state;
-    if (searchInput !== "") {
-      const filteredList = ordersList.map((item) =>
-        item.title.toLowerCase().includes(searchInput.toLowerCase())
-      );
-      this.setState({ ordersList: filteredList });
-    }
+    this.setState({ isSearchClicked: true });
   };
 
   render() {
-    const { ordersList } = this.state;
+    const { ordersList, searchInput } = this.state;
+
+    let searchList = [];
+
+    const searchLength = searchInput.length !== 0;
+    if (searchLength === true) {
+      const filteredList = ordersList.filter((item) =>
+        item.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      searchList = filteredList;
+    } else {
+      searchList = ordersList;
+    }
+
+    const checkForList = searchList.length === 0;
+
     return (
       <>
         <Header />
@@ -77,12 +96,12 @@ class Home extends Component {
           <OrderDetailsContainer>
             <RowContainer value1="true">
               <Paragraph>Supplier</Paragraph>
-              <Heading>East coast fruits & vegetables</Heading>
+              <Heading>East coast dressing and accessories</Heading>
             </RowContainer>
             <HrElement />
             <RowContainer value1="true">
               <Paragraph>Shipping date</Paragraph>
-              <Heading>Thu, Oct 26</Heading>
+              <Heading>Thu, Nov 26</Heading>
             </RowContainer>
             <HrElement />
             <RowContainer value1="true">
@@ -92,6 +111,16 @@ class Home extends Component {
             <HrElement />
             <RowContainer value1="true">
               <Paragraph>Category</Paragraph>
+              <RowContainer value2="true">
+                <AiFillApple />
+                <AiFillCustomerService />
+                <AiOutlineRadarChart />
+                <FaRing />
+                <FaShoppingBag />
+                <FiBox />
+                <GiAmpleDress />
+                <MdMonitor />
+              </RowContainer>
             </RowContainer>
             <HrElement />
             <RowContainer value1="true">
@@ -124,21 +153,30 @@ class Home extends Component {
               <Printer />
             </RowContainer>
           </RowContainer>
-          <TableContainer value="true">
-            <Paragraph>Product name</Paragraph>
-            <Paragraph>Brand</Paragraph>
-            <Paragraph>Price</Paragraph>
-            <Paragraph>Quantity</Paragraph>
-            <Paragraph>Total</Paragraph>
-            <Paragraph>Status</Paragraph>
-          </TableContainer>
-          <TableContainer>
-            <Ul>
-              {ordersList.map((item) => (
-                <OrderItem data={item} key={item.id} />
-              ))}
-            </Ul>
-          </TableContainer>
+
+          <Table>
+            <Tr>
+              <th></th>
+              <th>Product name</th>
+              <th>Brand</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Status</th>
+            </Tr>
+
+            {checkForList ? (
+              <EmptySearchContainer>
+                <Paragraph>No Data</Paragraph>
+              </EmptySearchContainer>
+            ) : (
+              <>
+                {searchList.map((item, index) => (
+                  <OrderItem data={item} key={index} />
+                ))}
+              </>
+            )}
+          </Table>
         </OrderDetailsContainer>
       </>
     );

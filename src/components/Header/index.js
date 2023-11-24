@@ -22,7 +22,7 @@ const Header = () => (
         <ListElement>Analytics</ListElement>
       </Div>
       <Div>
-        <Link to="/cart">
+        <Link to="/Reeco/cart">
           <CartIcon />
         </Link>
         <Para>Hello James</Para>

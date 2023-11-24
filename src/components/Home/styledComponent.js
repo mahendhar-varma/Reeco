@@ -17,6 +17,7 @@ export const RowContainer = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.value1 ? "column" : "row")};
   justify-content: ${(props) => props.value && "space-between"};
+  flex-wrap: ${(props) => props.value2 && "wrap"};
 `;
 
 export const RightArrow = styled(AiOutlineRight)`
@@ -92,22 +93,24 @@ export const MainContainer = styled.div`
   background-color: #a8a6ab;
 `;
 
-export const TableContainer = styled.div`
-  width: 700px;
-  border: ${(props) => (props.value ? 3 : 0)}px;
-  border-top-left-radius: ${(props) => props.value && 6}px;
-  border-top-right-radius: ${(props) => props.value && 6}px;
-  height: ${(props) => props.value && 60}px;
-  margin-left: ${(props) => props.value && 28}px;
-  border-color: #a8a6ab;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const Ul = styled.ul`
-  margin: 0px;
-  width: 100%;
+export const EmptySearchContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+`;
+
+export const Table = styled.table`
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid #aeaeae;
+`;
+
+export const Tr = styled.tr`
+  border-bottom: 1px solid #aeaeae;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `;
