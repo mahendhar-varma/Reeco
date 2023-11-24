@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { TiTick } from "react-icons/ti";
 
 export const Image = styled.img`
-  width: 20px;
+  width: 30px;
   height: 30px;
   background-size: cover;
 `;
 
 export const Tick = styled(TiTick)`
   width: 20px;
+  font-size: 15px;
 `;
 
 export const Text = styled.p`
@@ -20,17 +21,35 @@ export const Text = styled.p`
 `;
 
 export const StatusContainer = styled.div`
-  background-color: #575659;
+  background-color: #7005d3;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 60px;
+  height: 70px;
   padding: 10px;
+`;
+
+export const TextContainer = styled.div`
+  background-color: ${(props) => {
+    if (props.statustextcolor === "green") {
+      return "#023d04";
+    } else if (props.statustextcolor === "red") {
+      return "#d90707";
+    } else if (props.statustextcolor === "yellow") {
+      return "#dbab25";
+    } else if (props.statustextcolor === "orange") {
+      return "#FFA550";
+    }
+  }};
+  border-radius: 12px;
+  height: 30px;
+  padding: 5px;
 `;
 
 export const StatusText = styled.p`
   color: white;
   font-size: 14px;
+  margin-top: 2px;
 `;
 
 export const Btn = styled.button`
@@ -49,7 +68,7 @@ export const Btn = styled.button`
     }
   }};
   margin-top: ${(props) => props.value1 === "true" && -2}px;
-  height: 123px;
+  height: 40px;
   width: 40px;
 `;
 
@@ -65,6 +84,7 @@ export const Container1 = styled.div`
   width: 200px;
   border-radius: 12px;
   box-shadow: 1px 1px 1px 1px #888888;
+  background-color: white;
 `;
 
 export const Container2 = styled.div`
@@ -72,20 +92,4 @@ export const Container2 = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 0px;
-`;
-
-export const TextContainer = styled.div`
-  background-color: ${(props) => {
-    if (props.statustextcolor === "green") {
-      return "#023d04";
-    } else if (props.statustextcolor === "red") {
-      return "#d90707";
-    } else if (props.statustextcolor === "yellow") {
-      return "#dbab25";
-    } else if (props.statustextcolor === "orange") {
-      return "#FFA550";
-    }
-  }};
-  border-radius: 12px;
-  height: 18px;
 `;
