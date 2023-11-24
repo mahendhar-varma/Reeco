@@ -14,7 +14,7 @@ const Header = () => (
     <Ul>
       <Div>
         <LogoImage
-          src="https://i.ibb.co/XsW06LJ/download.png"
+          src="https://www.reeco.io/assets/logo.44b75468.svg"
           alt="Reeco logo"
         />
         <ListElement>Store</ListElement>

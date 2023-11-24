@@ -1,7 +1,17 @@
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
 import { BsPrinter } from "react-icons/bs";
-import { AiOutlineRight } from "react-icons/ai";
+import {
+  AiOutlineRight,
+  AiFillApple,
+  AiFillCustomerService,
+  AiOutlineRadarChart,
+} from "react-icons/ai";
+
+import { GiAmpleDress } from "react-icons/gi";
+import { FaShoppingBag, FaRing } from "react-icons/fa";
+import { MdMonitor } from "react-icons/md";
+import { FiBox } from "react-icons/fi";
 
 export const OrderDetailsContainer = styled.div`
   background-color: #ffffff;
@@ -56,7 +66,7 @@ export const Button = styled.button`
 `;
 
 export const Form = styled.form`
-  width: 200px;
+  width: 220px;
   border: 1px solid #a8a8a8;
   border-radius: 10px;
   display: flex;
@@ -68,13 +78,16 @@ export const SearchInput = styled.input`
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 3px;
-  height: 30px;
+  height: 16px;
+  margin-top: 6px;
+  margin-left: 6px;
 `;
 
 export const SearchIcon = styled(BiSearch)`
   width: 15px;
   margin: 10px;
+  margin-top: 2px;
+  margin-left: 2px;
   background-color: transparent;
 `;
 
@@ -113,4 +126,36 @@ export const Tr = styled.tr`
   border-bottom: 1px solid #aeaeae;
   padding-top: 10px;
   padding-bottom: 10px;
+`;
+
+export const AppleIcon = styled(AiFillApple)`
+  margin: 2px;
+`;
+
+export const ServiceIcon = styled(AiFillCustomerService)`
+  margin: 2px;
+`;
+
+export const ChartIcon = styled(AiOutlineRadarChart)`
+  margin: 2px;
+`;
+
+export const DressIcon = styled(GiAmpleDress)`
+  margin: 2px;
+`;
+
+export const BagIcon = styled(FaShoppingBag)`
+  margin: 2px;
+`;
+
+export const RingIcon = styled(FaRing)`
+  margin: 2px;
+`;
+
+export const MonitorIcon = styled(MdMonitor)`
+  margin: 2px;
+`;
+
+export const BoxIcon = styled(FiBox)`
+  margin: 2px;
 `;

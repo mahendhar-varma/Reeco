@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import { TiTick } from "react-icons/ti";
 
+export const Tr = styled.tr`
+  border-bottom: 1px solid #aeaeae;
+`;
+
+export const Td = styled.td`
+  background-color: #7005d3;
+`;
+
 export const Image = styled.img`
   width: 30px;
   height: 30px;
@@ -15,18 +23,17 @@ export const Tick = styled(TiTick)`
 export const Text = styled.p`
   font-size: 16px;
   color: #a8a6ab;
-  width: 120px;
-  margin-left: 10px;
+  width: ${(props) => (props.value ? 200 : 120)}px;
+  margin-left: 6px;
   text-align: center;
 `;
 
 export const StatusContainer = styled.div`
-  background-color: #7005d3;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 70px;
-  padding: 10px;
+  height: 50px;
+  padding-top: 10px;
 `;
 
 export const TextContainer = styled.div`

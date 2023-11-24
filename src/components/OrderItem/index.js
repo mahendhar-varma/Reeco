@@ -9,6 +9,8 @@ import {
   PopUpContainer,
   Container1,
   Container2,
+  Tr,
+  Td,
 } from "./styledComponent";
 import Popup from "reactjs-popup";
 import { connect } from "react-redux";
@@ -21,7 +23,7 @@ const OrderItem = (props) => {
   const { id, title, price, category, image } = data;
 
   const requiredObjectArray = newArray.filter((item) => item.textId === id);
-  requiredObjectArray.push({ textBg: "" });
+  requiredObjectArray.push({ text: "", textBg: "" });
 
   const { text, textBg } = requiredObjectArray[0];
 
@@ -29,7 +31,7 @@ const OrderItem = (props) => {
 
   return (
     <>
-      <tr>
+      <Tr>
         <td>
           <Image src={image} alt="order" />
         </td>
@@ -48,7 +50,7 @@ const OrderItem = (props) => {
         <td>
           <Text>{price}</Text>
         </td>
-        <td>
+        <Td>
           <StatusContainer>
             <TextContainer statustextcolor={statusTextColor}>
               <StatusText>{text}</StatusText>
@@ -90,7 +92,7 @@ const OrderItem = (props) => {
                           x
                         </Btn>
                       </Container2>
-                      <Text>is {title} urgent?</Text>
+                      <Text value="true">Is {title.slice(0, 23)} urgent?</Text>
                       <Container2>
                         <Btn
                           type="button"
@@ -137,8 +139,8 @@ const OrderItem = (props) => {
               Edit
             </Btn>
           </StatusContainer>
-        </td>
-      </tr>
+        </Td>
+      </Tr>
     </>
   );
 };

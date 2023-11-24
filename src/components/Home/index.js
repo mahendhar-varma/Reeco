@@ -18,17 +18,16 @@ import {
   EmptySearchContainer,
   Table,
   Tr,
+  AppleIcon,
+  ServiceIcon,
+  ChartIcon,
+  DressIcon,
+  BagIcon,
+  RingIcon,
+  MonitorIcon,
+  BoxIcon,
 } from "./styledComponent";
 import { Btn } from "../OrderItem/styledComponent";
-import {
-  AiFillApple,
-  AiFillCustomerService,
-  AiOutlineRadarChart,
-} from "react-icons/ai";
-import { GiAmpleDress } from "react-icons/gi";
-import { FaShoppingBag, FaRing } from "react-icons/fa";
-import { MdMonitor } from "react-icons/md";
-import { FiBox } from "react-icons/fi";
 
 class Home extends Component {
   state = { ordersList: [], searchInput: "", isSearchClicked: false };
@@ -112,14 +111,14 @@ class Home extends Component {
             <RowContainer value1="true">
               <Paragraph>Category</Paragraph>
               <RowContainer value2="true">
-                <AiFillApple />
-                <AiFillCustomerService />
-                <AiOutlineRadarChart />
-                <FaRing />
-                <FaShoppingBag />
-                <FiBox />
-                <GiAmpleDress />
-                <MdMonitor />
+                <AppleIcon />
+                <ServiceIcon />
+                <ChartIcon />
+                <DressIcon />
+                <BagIcon />
+                <RingIcon />
+                <MonitorIcon />
+                <BoxIcon />
               </RowContainer>
             </RowContainer>
             <HrElement />
@@ -155,27 +154,29 @@ class Home extends Component {
           </RowContainer>
 
           <Table>
-            <Tr>
-              <th></th>
-              <th>Product name</th>
-              <th>Brand</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th>Status</th>
-            </Tr>
+            <tbody>
+              <Tr>
+                <th></th>
+                <th>Product name</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Status</th>
+              </Tr>
 
-            {checkForList ? (
-              <EmptySearchContainer>
-                <Paragraph>No Data</Paragraph>
-              </EmptySearchContainer>
-            ) : (
-              <>
-                {searchList.map((item, index) => (
-                  <OrderItem data={item} key={index} />
-                ))}
-              </>
-            )}
+              {checkForList ? (
+                <EmptySearchContainer>
+                  <Paragraph>No Data</Paragraph>
+                </EmptySearchContainer>
+              ) : (
+                <>
+                  {searchList.map((item, index) => (
+                    <OrderItem data={item} key={index} />
+                  ))}
+                </>
+              )}
+            </tbody>
           </Table>
         </OrderDetailsContainer>
       </>
