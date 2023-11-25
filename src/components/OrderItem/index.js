@@ -226,7 +226,7 @@ class OrderItem extends Component {
                           <Image src={image} alt="item-image" value="true" />
                           <div>
                             <Container2>
-                              <Text>Price</Text>
+                              <Text>Price:</Text>
                               <Input
                                 type="text"
                                 onChange={this.changePrice}
@@ -235,7 +235,7 @@ class OrderItem extends Component {
                               />
                             </Container2>
                             <Container2>
-                              <Text>Quantity</Text>
+                              <Text>Quantity:</Text>
                               <QuantityCont>
                                 <Btn
                                   type="button"
@@ -253,7 +253,7 @@ class OrderItem extends Component {
                               </QuantityCont>
                             </Container2>
                             <Container2>
-                              <Text>Total</Text>
+                              <Text>Total:</Text>
                               <Text>{total}</Text>
                             </Container2>
                           </div>
