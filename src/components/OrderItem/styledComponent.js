@@ -47,8 +47,8 @@ export const TextContainer = styled.div`
       return "#FFA550";
     }
   }};
-  border-radius: 12px;
-  height: 30px;
+  border-radius: 14px;
+  height: 25px;
   padding: 5px;
 `;
 
@@ -56,6 +56,8 @@ export const StatusText = styled.p`
   color: white;
   font-size: 14px;
   margin-top: 2px;
+  width: 100px;
+  text-align: center;
 `;
 
 export const Btn = styled.button`
