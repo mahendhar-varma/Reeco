@@ -38,11 +38,26 @@ class Home extends Component {
   }
 
   getOrderDetails = async () => {
-    const url = "https://fakestoreapi.com/products";
+    const urls = "https://api.escuelajs.co/api/v1/products";
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
     try {
-      const responseData = await fetch(url);
+      const responseData = await fetch(urls, options);
       const data = await responseData.json();
-      this.setState({ ordersList: data });
+      console.log(data);
+      const updatedData = data.map((item) => ({
+        title: item.title,
+        id: item.id,
+        price: item.price,
+        category: item.category.name,
+        image: item.category.image,
+      }));
+      this.setState({ ordersList: updatedData });
     } catch (e) {
       console.log(e);
     }
