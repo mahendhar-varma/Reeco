@@ -49,7 +49,6 @@ class Home extends Component {
     try {
       const responseData = await fetch(urls, options);
       const data = await responseData.json();
-      console.log(data);
       const updatedData = data.map((item) => ({
         title: item.title,
         id: item.id,

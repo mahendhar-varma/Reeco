@@ -5,8 +5,8 @@ import Cart from "./components/Cart";
 const App = () => (
   <>
     <Routes>
-      <Route exact path="/Reeco" element={<Home />} />
-      <Route exact path="/Reeco/cart" element={<Cart />} />
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/cart" element={<Cart />} />
     </Routes>
   </>
 );
